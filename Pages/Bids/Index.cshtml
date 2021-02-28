@@ -1,0 +1,57 @@
+﻿@page
+@model Freelancing_Projects_Portal_Core_Webapp.Pages.Bids.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Bids</h1>
+
+<p>
+    <a class="btn btn-primary" asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Bid[0].BidValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bid[0].Project)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bid[0].Developer)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Bid[0].Project.Budget)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Bid) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BidValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.ProjectTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Developer.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Project.Budget)
+            </td>
+
+            <td>
+                <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="btn btn-primary" asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a class="btn btn-primary" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

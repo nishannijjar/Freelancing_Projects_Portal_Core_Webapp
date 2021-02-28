@@ -1,0 +1,42 @@
+﻿@page
+@model Freelancing_Projects_Portal_Core_Webapp.Pages.Bids.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Bid</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Bid.BidValue" class="control-label"></label>
+                <input asp-for="Bid.BidValue" class="form-control" />
+                <span asp-validation-for="Bid.BidValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bid.ProjectId" class="control-label"></label>
+                <select asp-for="Bid.ProjectId" class ="form-control" asp-items="ViewBag.ProjectId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bid.DeveloperId" class="control-label"></label>
+                <select asp-for="Bid.DeveloperId" class ="form-control" asp-items="ViewBag.DeveloperId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

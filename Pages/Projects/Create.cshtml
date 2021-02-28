@@ -1,0 +1,48 @@
+﻿@page
+@model Freelancing_Projects_Portal_Core_Webapp.Pages.Projects.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Project</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Project.ProjectTitle" class="control-label"></label>
+                <input asp-for="Project.ProjectTitle" class="form-control" />
+                <span asp-validation-for="Project.ProjectTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Project.Details" class="control-label"></label>
+                <input asp-for="Project.Details" class="form-control" />
+                <span asp-validation-for="Project.Details" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Project.Budget" class="control-label"></label>
+                <input asp-for="Project.Budget" class="form-control" />
+                <span asp-validation-for="Project.Budget" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Project.ClientId" class="control-label"></label>
+                <select asp-for="Project.ClientId" class ="form-control" asp-items="ViewBag.ClientId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
